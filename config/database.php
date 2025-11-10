@@ -85,12 +85,12 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DB_URL'),
+            'url' => env('DB_URL','postgresql://task_list_pgs_user:xORvEDFEm5MxZXXZwMPPnO8ShBuCxweC@dpg-d48ubnmr433s73aa2gu0-a/task_list_pgs'),
             'host' => env('DB_HOST', 'dpg-d48ubnmr433s73aa2gu0-a'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'laravel'),
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', 'task_list_pgs'),
+            'username' => env('DB_USERNAME', 'task_list_pgs_user'),
+            'password' => env('DB_PASSWORD', 'xORvEDFEm5MxZXXZwMPPnO8ShBuCxweC'),
             'charset' => env('DB_CHARSET', 'utf8'),
             'prefix' => '',
             'prefix_indexes' => true,
