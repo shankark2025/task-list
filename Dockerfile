@@ -1,15 +1,15 @@
 # Use PHP with Apache
 FROM php:8.2-apache
 
-# Enable Apache mod_rewrite (Laravel needs it)
+# Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
-# Install required system packages and PHP extensions
+# Install dependencies
 RUN apt-get update && apt-get install -y \
     git unzip libzip-dev zip libpq-dev \
     && docker-php-ext-install pdo pdo_mysql pdo_pgsql zip
 
-# Copy project files to container
+# Copy project files
 COPY . /var/www/html
 
 # Set working directory
@@ -19,12 +19,15 @@ WORKDIR /var/www/html
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader
 
-# Set permissions for Laravel
+# Set permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage /var/www/html/bootstrap/cache
+
+# Set Apache document root to public/
+RUN sed -i 's#/var/www/html#/var/www/html/public#g' /etc/apache2/sites-available/000-default.conf
 
 # Expose port 80
 EXPOSE 80
 
-# Start Apache server
+# Start Apache
 CMD ["apache2-foreground"]
