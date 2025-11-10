@@ -13,9 +13,9 @@ services:
       - key: DB_CONNECTION
         value: pgsql
       - key: DB_HOST
-        value: 0.0.0.0
+        value: postgresql://task_list_pgs_user:xORvEDFEm5MxZXXZwMPPnO8ShBuCxweC@dpg-d48ubnmr433s73aa2gu0-a/task_list_pgs
       - key: DB_PORT
-        value: 10000
+        value: 5432
       - key: DB_DATABASE
         value: task_list_pgs
       - key: DB_USERNAME
