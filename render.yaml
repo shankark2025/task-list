@@ -1,7 +1,23 @@
 services:
   - type: web
-    name: task-list-laravel
-    env: docker
-    plan: free
-    dockerfilePath: ./Dockerfile
-    autoDeploy: true
+    name: laravel-app
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_URL
+        value: https://task-list-cdu9.onrender.com
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        value: dpg-d48ubnmr433s73aa2gu0-a
+      - key: DB_PORT
+        value: 5432
+      - key: DB_DATABASE
+        value: task_list_pgs
+      - key: DB_USERNAME
+        value: task_list_pgs_userl
+      - key: DB_PASSWORD
+        value: xORvEDFEm5MxZXXZwMPPnO8ShBuCxweC
+
